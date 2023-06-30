@@ -3,3 +3,5 @@ resource "azurerm_resource_group" "az-aks-tf" {
   name = "${var.resource_group_name}-${var.environment}"
   location = var.location
 }
+
+

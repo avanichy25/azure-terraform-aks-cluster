@@ -1,5 +1,6 @@
-# Terraform Resource to Create Azure Resource Group with Input Variables defined in variables.tf
-resource "azurerm_resource_group" "az-aks-tf" {
-  name = "${var.resource_group_name}-${var.environment}"
-  location = var.location
+# Documentation Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/kubernetes_service_versions
+# Datasource to get Latest Azure AKS latest Version
+data "azurerm_kubernetes_service_versions" "current" {
+  location = azurerm_resource_group.az-aks-tf.location
+  include_preview = false
 }

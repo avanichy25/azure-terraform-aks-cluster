@@ -8,3 +8,4 @@ resource "azuread_group" "azure_admin" {
   types            = ["Unified"]
 
 }
+
