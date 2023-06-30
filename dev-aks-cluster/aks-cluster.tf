@@ -42,6 +42,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     min_count            = 1
     os_disk_size_gb      = 30
     type                 = "VirtualMachineScaleSets"
+    vnet_subnet_id       = azurerm_subnet.aks-default.id 
     node_labels = {
       "nodepool-type"    = "system"
       "environment"      = "dev"
@@ -70,7 +71,7 @@ azure_active_directory_role_based_access_control {
 # Add On Profiles
   oms_agent {
       log_analytics_workspace_id = azurerm_log_analytics_workspace.insights.id
-    }
+}
 
 
 # RBAC and Azure AD Integration Block
@@ -86,7 +87,7 @@ azure_active_directory_role_based_access_control {
   windows_profile {
     admin_username = var.windows_user
     admin_password = var.windows_password
-  }
+}
 
 # Linux Profile
   linux_profile {
